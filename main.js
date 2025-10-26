@@ -78,3 +78,54 @@ ScrollReveal().reveal(".portfolio__card", {
   duration: 1000,
   interval: 500,
 });
+
+// Contact Form Handling
+const contactForm = document.getElementById("contact-form");
+const formMessage = document.getElementById("form-message");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.textContent;
+    
+    // Disable button and show loading state
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+    formMessage.className = "form__message";
+    formMessage.style.display = "none";
+
+    const formData = new FormData(contactForm);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        formMessage.textContent = "Thank you! Your message has been sent successfully.";
+        formMessage.className = "form__message success";
+        contactForm.reset();
+      } else {
+        throw new Error(result.message || "Something went wrong");
+      }
+    } catch (error) {
+      formMessage.textContent = "Oops! Something went wrong. Please try again or email directly.";
+      formMessage.className = "form__message error";
+    } finally {
+      // Re-enable button
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
+  });
+}

@@ -217,6 +217,30 @@
         Whether it’s a project, research opportunity, or tech discussion, feel
         free to reach out and let’s build something great together.
       </p>
+      
+      <form class="contact__form" id="contact-form">
+        <div class="form__row">
+          <div class="form__group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required />
+          </div>
+          <div class="form__group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required />
+          </div>
+        </div>
+        <div class="form__group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form__group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+        <button type="submit" class="btn form__submit">Send</button>
+        <div id="form-message" class="form__message"></div>
+      </form>
       <div class="contact__socials">
         <!-- Replace '#' with your actual profile links -->
         <a href="https://www.linkedin.com/in/sudul/"
