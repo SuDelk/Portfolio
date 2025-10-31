@@ -30,6 +30,13 @@ hireMeBtn.addEventListener("click", () => {
   contactSection.scrollIntoView({ behavior: "smooth" });
 });
 
+// download cv button
+const downloadCvBtn = document.querySelector(".download_cv_btn");
+downloadCvBtn.addEventListener("click", () => {
+  const cvUrl = "./assets/cv.pdf";
+  window.open(cvUrl, "_blank");
+});
+
 // header container
 ScrollReveal().reveal(".header__content h1", {
   ...scrollRevealOption,
