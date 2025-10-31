@@ -23,6 +23,13 @@ const scrollRevealOption = {
   duration: 1000,
 };
 
+// hire me now button scroll
+const hireMeBtn = document.querySelector(".hire_btn");
+hireMeBtn.addEventListener("click", () => {
+  const contactSection = document.getElementById("contact");
+  contactSection.scrollIntoView({ behavior: "smooth" });
+});
+
 // header container
 ScrollReveal().reveal(".header__content h1", {
   ...scrollRevealOption,
@@ -64,14 +71,13 @@ ScrollReveal().reveal(".service__card", {
   interval: 500,
 });
 
-ScrollReveal().reveal('.timeline__item', {
-  origin: 'left',
-  distance: '50px',
+ScrollReveal().reveal(".timeline__item", {
+  origin: "left",
+  distance: "50px",
   duration: 800,
-  easing: 'ease-in-out',
+  easing: "ease-in-out",
   interval: 200,
 });
-
 
 // portfolio container
 ScrollReveal().reveal(".portfolio__card", {
@@ -89,7 +95,7 @@ if (contactForm) {
 
     const submitButton = contactForm.querySelector('button[type="submit"]');
     const originalButtonText = submitButton.textContent;
-    
+
     // Disable button and show loading state
     submitButton.disabled = true;
     submitButton.textContent = "Sending...";
@@ -113,14 +119,16 @@ if (contactForm) {
       const result = await response.json();
 
       if (response.ok && result.success) {
-        formMessage.textContent = "Thank you! Your message has been sent successfully.";
+        formMessage.textContent =
+          "Thank you! Your message has been sent successfully.";
         formMessage.className = "form__message success";
         contactForm.reset();
       } else {
         throw new Error(result.message || "Something went wrong");
       }
     } catch (error) {
-      formMessage.textContent = "Oops! Something went wrong. Please try again or email directly.";
+      formMessage.textContent =
+        "Oops! Something went wrong. Please try again or email directly.";
       formMessage.className = "form__message error";
     } finally {
       // Re-enable button
