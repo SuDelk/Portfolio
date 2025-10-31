@@ -127,7 +127,7 @@ if (contactForm) {
 
       if (response.ok && result.success) {
         formMessage.textContent =
-          "Thank you! Your message has been sent successfully.";
+          "✅ Thank you! Your message has been sent successfully.";
         formMessage.className = "form__message success";
         contactForm.reset();
       } else {
@@ -135,12 +135,13 @@ if (contactForm) {
       }
     } catch (error) {
       formMessage.textContent =
-        "Oops! Something went wrong. Please try again or email directly.";
+        "🚫 Oops! Something went wrong. Please try again or email directly.";
       formMessage.className = "form__message error";
     } finally {
       // Re-enable button
       submitButton.disabled = false;
       submitButton.textContent = originalButtonText;
+      alert(formMessage.textContent);
     }
   });
 }
