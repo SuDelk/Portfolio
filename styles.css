@@ -393,6 +393,101 @@ nav {
   margin-bottom: 1rem;
 }
 
+.contact__form {
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: left;
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form__group {
+  margin-bottom: 1rem;
+}
+
+.form__group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.form__group .required {
+  color: #ef4444;
+}
+
+.form__group input,
+.form__group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  color: #1f2937;
+  background-color: var(--white);
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form__group input:focus,
+.form__group textarea:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+}
+
+.form__group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form__submit {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.875rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.form__submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form__message {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+  display: none;
+}
+
+.form__message.success {
+  display: block;
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  border: 1px solid #10b981;
+}
+
+.form__message.error {
+  display: block;
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid #ef4444;
+}
+
 .contact__socials {
   margin-top: 2rem;
   display: flex;
