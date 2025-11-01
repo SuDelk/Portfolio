@@ -246,6 +246,67 @@ nav {
 .about__content .section__description {
   margin-bottom: 2rem;
 }
+.about_logo_slider {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* hide scrollbar firefox */
+}
+.about_logo_slider::-webkit-scrollbar {
+  display: none;
+} /* hide on chrome */
+
+.about_logo_track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 40px;
+  animation: scroll 18s linear infinite;
+}
+
+.about_logo_slider:hover .about_logo_track {
+  animation-play-state: paused;
+}
+
+.about_logo_track.paused {
+  animation-play-state: paused !important;
+}
+
+.about_logo_slide img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(20%);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.about_logo_slide img:hover {
+  transform: scale(1.1);
+  filter: none;
+}
+
+/* Infinite scroll animation */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .about_logo_slide img {
+    height: 38px;
+  }
+  .about_logo_track {
+    gap: 25px;
+    animation-duration: 20s;
+  }
+}
 
 .service__grid {
   margin-top: 2rem;

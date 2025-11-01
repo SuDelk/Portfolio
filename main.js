@@ -37,6 +37,52 @@ downloadCvBtn.addEventListener("click", () => {
   window.open(cvUrl, "_blank");
 });
 
+//slider
+const slider = document.querySelector(".about_logo_slider");
+const track = document.querySelector(".about_logo_track");
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener("mousedown", (e) => {
+  isDown = true;
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+
+  track.classList.add("paused"); // pause animation
+  slider.style.cursor = "grabbing";
+});
+
+slider.addEventListener("mouseleave", () => {
+  isDown = false;
+  track.classList.remove("paused"); // resume animation
+  slider.style.cursor = "grab";
+});
+
+slider.addEventListener("mouseup", () => {
+  isDown = false;
+  track.classList.remove("paused"); // resume animation
+  slider.style.cursor = "grab";
+});
+
+slider.addEventListener("mousemove", (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 1;
+  slider.scrollLeft = scrollLeft - walk;
+});
+
+// Touch support
+slider.addEventListener("touchstart", () => {
+  track.classList.add("paused");
+});
+
+slider.addEventListener("touchend", () => {
+  track.classList.remove("paused");
+});
+
 // header container
 ScrollReveal().reveal(".header__content h1", {
   ...scrollRevealOption,
@@ -137,6 +183,7 @@ if (contactForm) {
       formMessage.textContent =
         "🚫 Oops! Something went wrong. Please try again or email directly.";
       formMessage.className = "form__message error";
+      console.error("Form submission error:", error);
     } finally {
       // Re-enable button
       submitButton.disabled = false;
